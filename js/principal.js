@@ -62,5 +62,6 @@ titulo.addEventListener ('click', function () {
 var botaoAdicionar = document.querySelector('#adicionar-paciente');
 
 botaoAdicionar.addEventListener('click', function () {
+    event.preventDefault();
     console.log("Botão adicionar paciente foi clicado!")
 });
