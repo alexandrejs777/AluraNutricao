@@ -5,7 +5,7 @@ titulo.textContent = "Alura Nutrição";
 var pacientes = document.querySelectorAll(".paciente");
 
 for (var i = 0; i < pacientes.length; i++){
-    console.log(pacientes[i]);
+    //console.log(pacientes[i]);
 
     var paciente = pacientes[i];
 
@@ -22,14 +22,14 @@ for (var i = 0; i < pacientes.length; i++){
     var alturaEValida = true;
 
     if (peso <= 0 || peso >= 1000){
-        console.log("Peso inválido!");
+        //console.log("Peso inválido!");
         pesoEValido = false;
         tdImc.textContent = "Peso inválido!";
         paciente.classList.add("paciente-atencao");
     }
 
     if (altura <= 0 || altura >= 3.00){
-        console.log("Altura inválida!");
+        //console.log("Altura inválida!");
         alturaEValida = false;
         tdImc.textContent = "Altura inválida!";
         paciente.classList.add("paciente-atencao");
@@ -41,7 +41,26 @@ for (var i = 0; i < pacientes.length; i++){
     }
 }
 
+// Função nomeada
+/*
+titulo.addEventListener("click", mostraMenssagem);
+
+function mostraMenssagem() {
+    console.log("Olá, eu fui clicado!");
+}
+*/
 
 
+// Função anônima
+/*
+titulo.addEventListener ('click', function () {
+    console.log("Olha só posso chamar uma função anônima!")
+})
+*/
 
+// Evento no botão 'Adicionar paciente'
+var botaoAdicionar = document.querySelector('#adicionar-paciente');
 
+botaoAdicionar.addEventListener('click', function () {
+    console.log("Botão adicionar paciente foi clicado!")
+});
