@@ -39,4 +39,5 @@ botaoAdicionar.addEventListener('click', function () {
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
     gorduraTd.textContent = gordura;
+    imcTd.textContent = calculaImc(peso, altura);
 });
