@@ -1,43 +1,27 @@
-// Evento no botão 'Adicionar paciente'
+// Obtém ação sobre o botão adicionar
 var botaoAdicionar = document.querySelector('#adicionar-paciente');
 
+// Cria e executa o evento de adicionar um novo paciente
 botaoAdicionar.addEventListener('click', function () {
     event.preventDefault();
     
-    // Capturar os dados do formulário
+    // Obtém ação sobre o formulário
     var formulario = document.querySelector('#form-adiciona');
 
+    // Obtém os dados do paciente do formulário
     var paciente = obtemPacienteDoFormulario(formulario);
     console.log(paciente);
 
-    // Criar as tabelas
-    var pacienteTr = document.createElement('tr');
-
-    var nomeTd = document.createElement('td');
-    var pesoTd = document.createElement('td');
-    var alturaTd = document.createElement('td');
-    var gorduraTd = document.createElement('td');
-    var imcTd = document.createElement('td');
-
-    // Colocar os TDs dentro do TR
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
+    // Cria uma nova linha na tabela com os dados do formulário do paciente
+    var pacienteTr = montaTr(paciente);
 
     // Colocar os elementos de tabela dentro da TB
     var tabela = document.querySelector('#tabela-pacientes');
-
+    
+    // Insere a nova linha dentro da tabela
     tabela.appendChild(pacienteTr);
 
-
-    // Inserir os dados do formulário dentro dos elementos criados
-    nomeTd.textContent = nome;
-    pesoTd.textContent = peso;
-    alturaTd.textContent = altura;
-    gorduraTd.textContent = gordura;
-    imcTd.textContent = calculaImc(peso, altura);
+    formulario.reset();
 });
 
 function obtemPacienteDoFormulario(formulario){
@@ -51,4 +35,29 @@ function obtemPacienteDoFormulario(formulario){
     }
      
     return paciente;
+}
+
+function montaTr(paciente){
+    
+    // Cria a linha (tr)
+    var pacienteTr = document.createElement('tr');
+    pacienteTr.classList.add('paciente');
+
+    // Insere as células criadas dentro da linha, já com os dados do paciente e criando as classes
+    pacienteTr.appendChild(montaTd(paciente.nome, 'info-nome'));
+    pacienteTr.appendChild(montaTd(paciente.peso, 'info-peso'));
+    pacienteTr.appendChild(montaTd(paciente.altura, 'info-altura'));
+    pacienteTr.appendChild(montaTd(paciente.gordura, 'info-gordura'));
+    pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'));
+
+    return pacienteTr;
+}
+
+function montaTd(dado, classe){
+    // Cria as células (td), insere o dado do paciente e adiciona também a classe neste elemento criado
+    var td = document.createElement('td');
+    td.textContent = dado;
+    td.classList.add(classe);
+
+    return td;
 }
