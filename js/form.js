@@ -10,10 +10,15 @@ botaoAdicionar.addEventListener('click', function () {
 
     // Obtém os dados do paciente do formulário
     var paciente = obtemPacienteDoFormulario(formulario);
-    console.log(paciente);
+    //console.log(paciente);
 
     // Cria uma nova linha na tabela com os dados do formulário do paciente
     var pacienteTr = montaTr(paciente);
+
+    if (!validaPaciente(paciente)){
+        console.log("Paciente inválido!");
+        return;
+    }
 
     // Colocar os elementos de tabela dentro da TB
     var tabela = document.querySelector('#tabela-pacientes');
@@ -60,4 +65,12 @@ function montaTd(dado, classe){
     td.classList.add(classe);
 
     return td;
+}
+
+function validaPaciente(paciente){
+    if (validaPeso(paciente.peso)){
+        return true;
+    } else {
+        return false;
+    }
 }
