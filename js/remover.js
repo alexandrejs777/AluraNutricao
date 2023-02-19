@@ -17,5 +17,11 @@ tabela.addEventListener('dblclick', function(event){
     var paiDoAlvo = alvoDoEvento.parentNode;
     paiDoAlvo.remove();
     */
-   event.target.parentNode.remove(); // A mesma função acima, porém mais simples.
+   
+   // A mesma função acima, porém mais simples.
+   event.target.parentNode.classList.add('fadeOut');
+   
+   setTimeout(function(){
+        event.target.parentNode.remove(); 
+   }, 500);
 })
