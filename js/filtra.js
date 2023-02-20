@@ -10,8 +10,8 @@ campoFiltro.addEventListener('input', function() {
             var paciente = pacientes[i];
             var tdNome = paciente.querySelector('.info-nome');
             var nome = tdNome.textContent;
-    
-            if (nome != this.value){
+            var expressaoRegular = new RegExp(this.value, "i");
+            if (!expressaoRegular.test(nome)){
                 paciente.classList.add('esconde-paciente');
             } else {
                 paciente.classList.remove('esconde-paciente');
@@ -23,6 +23,4 @@ campoFiltro.addEventListener('input', function() {
             paciente.classList.remove('esconde-paciente');
         }
     }
-
-    
 });
