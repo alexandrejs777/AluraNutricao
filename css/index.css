@@ -153,7 +153,7 @@ button[disabled=disabled], button:disabled {
 	margin-bottom: 1em;
 }
 
-.esconde-paciente {
+.esconde-paciente, .invisivel {
 	display: none;
 }
 
