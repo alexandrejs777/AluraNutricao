@@ -10,30 +10,29 @@ botaoAdicionar.addEventListener('click', function () {
 
     // Obtém os dados do paciente do formulário
     var paciente = obtemPacienteDoFormulario(formulario);
-    //console.log(paciente);
-
-    // Cria uma nova linha na tabela com os dados do formulário do paciente
-    var pacienteTr = montaTr(paciente);
-
+   
     var erros = validaPaciente(paciente);
-
-    //console.log(erros);
 
     if (erros.length > 0){
         exibeMensagensDeErro(erros);
         return;
     }
-
-    // Colocar os elementos de tabela dentro da TB
-    var tabela = document.querySelector('#tabela-pacientes');
     
-    // Insere a nova linha dentro da tabela
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
 
     formulario.reset();
     var ul = document.querySelector("#mensagens-erro");
     ul.innerHTML = "";
 });
+
+function adicionaPacienteNaTabela(paciente){
+    // Cria uma nova linha na tabela com os dados do formulário do paciente
+    var pacienteTr = montaTr(paciente);
+    // Colocar os elementos de tabela dentro da TB
+    var tabela = document.querySelector('#tabela-pacientes');
+    // Insere a nova linha dentro da tabela
+    tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagensDeErro(erros){
     var ul = document.querySelector("#mensagens-erro");
